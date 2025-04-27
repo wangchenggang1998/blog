@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> Hello World -  wangchenggang&#39;s Blogs</title>
+		<title> wangchenggang&#39;s Blogs</title>
 		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
 		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
 		
@@ -310,37 +310,88 @@
 			<img
 				data-src="https://w.wallhaven.cc/full/73/wallhaven-73mzme.jpg"
 				data-sizes="auto"
-				alt="Hello World"
+				alt=""
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>Hello World</h1>
+			<h1></h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2024年08月14日</a>
-			<a><i class="kirafont icon-edit-fill"></i>75 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年08月26日</a>
+			<a><i class="kirafont icon-edit-fill"></i>799 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
 		</div>
-		<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+		<p>在 C++ 中，<code>detach</code> 和 <code>join</code> 是用于管理线程生命周期的两种操作。它们的作用和区别如下：</p>
+<h3><span id="1-join">1. <code>join</code></span></h3><ul>
+<li><p><strong>描述</strong>: <code>join</code> 操作会阻塞当前线程，直到被 <code>join</code> 的线程执行完毕。这意味着调用 <code>join</code> 的线程会等待被 <code>join</code> 的线程完成，然后才继续执行。</p>
+</li>
+<li><p><strong>作用</strong>:</p>
+<ul>
+<li>确保线程在主线程结束之前完成执行。</li>
+<li>让主线程能够获取线程的退出状态或结果。</li>
+</ul>
+</li>
+<li><p><strong>使用场景</strong>:</p>
+<ul>
+<li>当主线程依赖于子线程的执行结果时。</li>
+<li>当需要确保所有子线程在程序退出前执行完毕。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">threadFunction</span><span class="hljs-params">()</span> </span>&#123;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">2</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Thread finished execution&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">std::thread <span class="hljs-title">t</span><span class="hljs-params">(threadFunction)</span></span>;<br>    t.<span class="hljs-built_in">join</span>();  <span class="hljs-comment">// 等待线程t完成</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Main thread continues&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>在这个示例中，主线程会等待 <code>t</code> 线程完成后才继续执行。</p>
+</li>
+</ul>
+<h3><span id="2-detach">2. <code>detach</code></span></h3><ul>
+<li><p><strong>描述</strong>: <code>detach</code> 操作会使线程独立于当前线程执行。调用 <code>detach</code> 后，线程将与创建它的线程分离，并在后台独立运行，不受主线程的控制。</p>
+</li>
+<li><p><strong>作用</strong>:</p>
+<ul>
+<li>使线程在后台运行，主线程不需要等待它完成。</li>
+<li>线程的资源管理交给操作系统，一旦线程完成，它的资源会自动被回收。</li>
+</ul>
+</li>
+<li><p><strong>使用场景</strong>:</p>
+<ul>
+<li>当线程的执行不依赖于主线程或其他线程的结果时。</li>
+<li>当需要让线程在后台执行一些不需要立即响应的任务时。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">threadFunction</span><span class="hljs-params">()</span> </span>&#123;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">2</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Thread finished execution&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">std::thread <span class="hljs-title">t</span><span class="hljs-params">(threadFunction)</span></span>;<br>    t.<span class="hljs-built_in">detach</span>();  <span class="hljs-comment">// 分离线程 t，使其在后台执行</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Main thread continues&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-comment">// 主线程继续执行，不等待子线程</span><br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">3</span>)); <span class="hljs-comment">// 保证主线程不提前退出</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>在这个示例中，线程 <code>t</code> 会在后台独立运行，而主线程不会等待它完成，并继续执行。</p>
+</li>
+</ul>
+<h3><span id="3-区别">3. 区别</span></h3><ul>
+<li><strong>控制</strong>:<ul>
+<li><code>join</code>: 主线程控制子线程的生命周期，等待子线程完成。</li>
+<li><code>detach</code>: 子线程与主线程分离，独立运行。</li>
+</ul>
+</li>
+<li><strong>资源管理</strong>:<ul>
+<li><code>join</code>: 主线程负责确保子线程结束，并回收其资源。</li>
+<li><code>detach</code>: 操作系统负责管理线程资源，当线程完成时，系统会自动回收资源。</li>
+</ul>
+</li>
+<li><strong>风险</strong>:<ul>
+<li><code>join</code>: 没有特别的风险，但主线程会被阻塞直到子线程完成。</li>
+<li><code>detach</code>: 如果主线程过早退出，后台线程可能还没有完成，从而导致潜在的资源泄漏或未定义行为（如果线程访问已经销毁的资源）。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="总结">总结</span></h3><ul>
+<li>使用 <code>join</code> 是为了确保线程的有序执行，特别是在主线程依赖子线程结果或在程序退出前需要等待所有线程完成时。</li>
+<li>使用 <code>detach</code> 适用于那些不需要主线程等待的独立后台任务，但要小心资源管理和生命周期问题，以避免未定义行为。</li>
+</ul>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>Author：</strong>WangChengGang<br>
-        <strong>Link：</strong><a href="http://example.com/2024/08/14/hello-world/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;</a><br>
+        <strong>Link：</strong><a href="http://example.com/2024/08/26/%E3%80%90STL%E3%80%91%E7%BA%BF%E7%A8%8B%E4%B8%ADdetach%E5%92%8Cjoin%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;26&#x2F;【STL】线程中detach和join有什么区别？&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;26&#x2F;【STL】线程中detach和join有什么区别？&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         

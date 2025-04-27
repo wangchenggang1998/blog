@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html 
+	lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> wangchenggang&#39;s Blogs</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://logotyp.us/file/c-plus-plus.svg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://w.wallhaven.cc/full/73/wallhaven-73mzme.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="wangchenggang&#39;s Blogs">
+        <img
+			src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+			alt="WangChengGang"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif" title="WangChengGang">
+			<img
+				src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+				alt="WangChengGang"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>19</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=888888888"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/374634716"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/wangchenggang1998"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/wangchenggang98"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			Archive
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">19</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">WangChengGang</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://w.wallhaven.cc/full/73/wallhaven-73mzme.jpg"
+				data-sizes="auto"
+				alt=""
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1></h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2024年08月27日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.9k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 8 分钟</a>
+		</div>
+		<p><code>const</code> 是 C++ 中的一个关键字，用于定义常量，确保变量的值不可被修改。<code>const</code> 可以用于不同的场景，包括变量、指针、成员函数等。以下是对 <code>const</code> 的详细理解：</p>
+<h3><span id="1-常量变量">1. <strong>常量变量</strong></span></h3><p>使用 <code>const</code> 修饰的变量在初始化后不能被修改，意味着它的值在整个程序的生命周期中保持不变。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br>x = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 错误：不能修改 const 变量的值</span><br></code></pre></td></tr></table></figure>
+
+<h3><span id="2-指针与-const">2. <strong>指针与 const</strong></span></h3><p>指针和 <code>const</code> 的组合可以表达多种含义，具体取决于 <code>const</code> 的位置。</p>
+<ul>
+<li><p><strong>指向常量的指针（pointer to const）</strong>：</p>
+<ul>
+<li>指针指向的值是常量，不能通过该指针修改所指向的值，但指针本身可以指向其他地址。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span>* ptr = &amp;x;  <span class="hljs-comment">// ptr 指向常量 int</span><br>*ptr = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 错误：不能通过 ptr 修改 x 的值</span><br>ptr = &amp;y;   <span class="hljs-comment">// 可以更改 ptr 的指向</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>常量指针（const pointer）</strong>：</p>
+<ul>
+<li>指针本身是常量，不能改变它的指向，但可以通过指针修改它指向的值。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span>* <span class="hljs-type">const</span> ptr = &amp;x;  <span class="hljs-comment">// ptr 是一个常量指针</span><br>*ptr = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 可以通过 ptr 修改 x 的值</span><br>ptr = &amp;y;   <span class="hljs-comment">// 错误：不能改变 ptr 的指向</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>指向常量的常量指针（const pointer to const）</strong>：</p>
+<ul>
+<li>指针本身和指针指向的值都是常量，既不能修改指针指向的值，也不能更改指针的指向。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span>* <span class="hljs-type">const</span> ptr = &amp;x;  <span class="hljs-comment">// ptr 是一个指向常量的常量指针</span><br>*ptr = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 错误：不能通过 ptr 修改 x 的值</span><br>ptr = &amp;y;   <span class="hljs-comment">// 错误：不能改变 ptr 的指向</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-函数参数中的-const">3. <strong>函数参数中的 const</strong></span></h3><p><code>const</code> 可以用于修饰函数的参数，以防止函数内部修改传入的参数值。</p>
+<ul>
+<li><p><strong>传值方式</strong>：</p>
+<ul>
+<li><code>const</code> 修饰传入的值类型参数，确保函数内部不能修改该参数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> x)</span> </span>&#123;<br>    x = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 错误：不能修改 x</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>传引用方式</strong>：</p>
+<ul>
+<li><code>const</code> 修饰传入的引用类型参数，确保引用所指向的对象不能被修改。使用 <code>const</code> 引用可以避免拷贝对象，提高效率。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; x)</span> </span>&#123;<br>    x = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 错误：不能修改 x</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="4-成员函数中的-const">4. <strong>成员函数中的 const</strong></span></h3><p><code>const</code> 成员函数表示该成员函数不会修改对象的状态，意味着函数内不能修改任何成员变量（除非是 <code>mutable</code> 修饰的变量），也不能调用非 <code>const</code> 的成员函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getValue</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;  <span class="hljs-comment">// const 成员函数</span><br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-type">int</span> v)</span> </span>&#123;<br>        value = v;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> value;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>在 <code>const</code> 成员函数中，<code>this</code> 指针的类型实际上是 <code>const MyClass*</code>，因此该函数不能修改对象的状态。</p>
+<h3><span id="5-返回值为-const">5. <strong>返回值为 const</strong></span></h3><p>函数的返回值可以是 <code>const</code>，这意味着返回的值不能被修改。如果函数返回的是 <code>const</code> 指针或引用，调用者不能通过返回值来修改原始对象。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; <span class="hljs-title">getValue</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> value;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>返回值为 <code>const</code> 的常见用途是防止函数调用者修改返回值，特别是当返回的是对象的引用或指针时。</p>
+<h3><span id="6-常量成员变量">6. <strong>常量成员变量</strong></span></h3><p>类中的成员变量可以声明为 <code>const</code>，这意味着该成员变量必须在初始化列表中初始化，并且在对象的整个生命周期中保持不变。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MyClass</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">value</span>(x) &#123;&#125;  <span class="hljs-comment">// 必须在构造函数初始化列表中初始化</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> value;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3><span id="7-const-与-mutable">7. <strong><code>const</code> 与 <code>mutable</code></strong></span></h3><p>通常，<code>const</code> 成员函数不能修改成员变量，但是如果某个成员变量被 <code>mutable</code> 关键字修饰，它可以在 <code>const</code> 成员函数中被修改。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        mutableValue = <span class="hljs-number">10</span>;  <span class="hljs-comment">// 可以修改 mutable 变量</span><br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">mutable</span> <span class="hljs-type">int</span> mutableValue;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1><span id="优点">优点</span></h1><p>使用 <code>const</code> 关键字在 C++ 中具有多个优点，特别是在代码的安全性、可读性、维护性等方面。以下是 <code>const</code> 的主要优点：</p>
+<h3><span id="1-提高代码的安全性">1. <strong>提高代码的安全性</strong></span></h3><ul>
+<li><p><strong>防止意外修改</strong>：</p>
+<ul>
+<li>使用 <code>const</code> 可以防止变量在不应该被修改时被意外修改，确保数据的不可变性。例如，<code>const</code> 成员函数、<code>const</code> 参数、<code>const</code> 指针等，都可以防止意外的修改，减少 bug 的可能性。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码void func(const int* ptr) &#123;<br>    *ptr = 20;  // 错误：ptr 指向的是 const int，不能修改<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>确保对象的一致性</strong>：</p>
+<ul>
+<li>在类设计中，使用 <code>const</code> 成员函数可以确保对象的状态在特定操作中不会被改变，这对于函数依赖于对象状态保持一致性的场景尤其重要。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码class MyClass &#123;<br>public:<br>    int getValue() const &#123;<br>        return value;  // 不会修改对象状态<br>    &#125;<br>private:<br>    int value;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="2-增强代码的可读性和意图表达">2. <strong>增强代码的可读性和意图表达</strong></span></h3><ul>
+<li><p><strong>明确意图</strong>：</p>
+<ul>
+<li>使用 <code>const</code> 关键字可以让代码的意图更加明确。读者通过查看函数声明、变量声明等可以直接了解哪些部分是不可变的，从而理解代码的设计意图。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码void printMessage(const std::string&amp; message) &#123;<br>    // message 不会被修改<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-提高代码的可维护性">3. <strong>提高代码的可维护性</strong></span></h3><ul>
+<li><strong>减少错误引入的可能性</strong>：<ul>
+<li>在大型代码库中，维护和修改代码时，如果变量或函数被声明为 <code>const</code>，开发者就能知道哪些地方是不可修改的，从而避免无意间引入错误。</li>
+</ul>
+</li>
+<li><strong>接口的稳定性</strong>：<ul>
+<li>使用 <code>const</code> 可以确保函数接口的稳定性。对于外部调用者，<code>const</code> 参数和 <code>const</code> 成员函数提供了一种契约，保证调用这些接口不会改变传入的数据或对象的状态。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="4-优化编译器优化">4. <strong>优化编译器优化</strong></span></h3><ul>
+<li><p>编译器优化</p>
+<p>：</p>
+<ul>
+<li>编译器可以利用 <code>const</code> 关键字进行优化。例如，如果一个变量是 <code>const</code>，编译器可能会将它优化为只读变量，减少内存访问，或者在某些情况下进行常量折叠。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="5-支持复杂类型的安全传递">5. <strong>支持复杂类型的安全传递</strong></span></h3><ul>
+<li><p><strong>传递复杂数据类型</strong>：</p>
+<ul>
+<li>使用 <code>const</code> 引用或指针可以避免复制大量数据，尤其在函数参数传递复杂对象时。这既保证了效率，又确保了安全性。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码void process(const std::vector&lt;int&gt;&amp; data) &#123;<br>    // 避免了拷贝 data，同时保证 data 不会被修改<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="6-支持重载">6. <strong>支持重载</strong></span></h3><ul>
+<li><p><strong>函数重载</strong>：</p>
+<ul>
+<li><code>const</code> 可以用于区分重载函数。例如，可以有一个 <code>const</code> 成员函数和一个非 <code>const</code> 成员函数，通过 <code>const</code> 修饰可以决定调用哪一个版本。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码class MyClass &#123;<br>public:<br>    void show() const &#123;<br>        std::cout &lt;&lt; &quot;const version&quot; &lt;&lt; std::endl;<br>    &#125;<br>    void show() &#123;<br>        std::cout &lt;&lt; &quot;non-const version&quot; &lt;&lt; std::endl;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="7-防止无意义的赋值">7. <strong>防止无意义的赋值</strong></span></h3><ul>
+<li><p><strong>防止无意义的赋值</strong>：</p>
+<ul>
+<li>在需要明确常量值的场景中使用 <code>const</code>，可以防止将该值意外地重新赋值为其他值。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cpp复制代码const int size = 10;<br>size = 20;  // 错误：size 是 const，不能被重新赋值<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="总结">总结</span></h3><p>使用 <code>const</code> 关键字有助于编写更安全、更清晰、更易维护的代码。它能有效地防止意外修改、提升代码的意图表达能力，同时也有助于编译器的优化。总之，<code>const</code> 是 C++ 编程中提升代码质量的重要工具。</p>
+<h3><span id="总结">总结</span></h3><p><code>const</code> 是 C++ 中确保代码安全性和稳定性的重要工具。它允许你声明不可变的变量、防止修改函数参数、保护成员变量不被修改，以及在对象间安全传递数据。正确使用 <code>const</code> 关键字不仅有助于避免错误，还能提升代码的可读性和维护性。</p>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>Author：</strong>WangChengGang<br>
+        <strong>Link：</strong><a href="http://example.com/2024/08/27/%E3%80%90C++%E3%80%91const/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】const&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】const&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="-your github username-/-your giscus repo-"
+      data-repo-id="-your giscus repo ID-"
+      data-category="Announcements"
+      data-category-id="-giscus category id-"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

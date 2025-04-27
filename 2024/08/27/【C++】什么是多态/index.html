@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> Hello World -  wangchenggang&#39;s Blogs</title>
+		<title> wangchenggang&#39;s Blogs</title>
 		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
 		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
 		
@@ -310,37 +310,75 @@
 			<img
 				data-src="https://w.wallhaven.cc/full/73/wallhaven-73mzme.jpg"
 				data-sizes="auto"
-				alt="Hello World"
+				alt=""
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>Hello World</h1>
+			<h1></h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2024年08月14日</a>
-			<a><i class="kirafont icon-edit-fill"></i>75 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年08月27日</a>
+			<a><i class="kirafont icon-edit-fill"></i>799 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
 		</div>
-		<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+		<h1><span id="什么是多态">什么是多态</span></h1><p><strong>多态</strong>（Polymorphism）是面向对象编程（OOP）中的一个重要概念，它允许同一接口以不同的形式执行操作。多态性使得程序能够在不同对象间共享相同的接口，但在不同情况下表现出不同的行为。</p>
+<h3><span id="多态的类型">多态的类型</span></h3><p>多态通常分为两种类型：</p>
+<ol>
+<li><p><strong>编译时多态（静态多态）</strong>：</p>
+<ul>
+<li>通过函数重载和运算符重载实现。</li>
+<li>编译器在编译时决定调用哪个方法。</li>
+<li>常见实现：<ul>
+<li><strong>函数重载</strong>：同名函数具有不同的参数类型或个数。</li>
+<li><strong>运算符重载</strong>：允许自定义类对象对运算符（如 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>）的响应方式。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Example</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Integer: &quot;</span> &lt;&lt; x &lt;&lt; std::endl; &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Double: &quot;</span> &lt;&lt; x &lt;&lt; std::endl; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Example ex;<br>    ex.<span class="hljs-built_in">func</span>(<span class="hljs-number">10</span>);     <span class="hljs-comment">// 调用第一个 func(int x)</span><br>    ex.<span class="hljs-built_in">func</span>(<span class="hljs-number">10.5</span>);   <span class="hljs-comment">// 调用第二个 func(double x)</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>运行时多态（动态多态）</strong>：</p>
+<ul>
+<li>通过继承和虚函数实现。</li>
+<li>编译器在运行时根据对象的实际类型决定调用哪个方法。</li>
+<li>常见实现：<ul>
+<li><strong>虚函数</strong>：基类中定义虚函数，派生类中重写该函数，使用基类指针或引用调用时，会根据实际对象类型调用派生类的重写函数。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">()</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Base show&quot;</span> &lt;&lt; std::endl; &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Derived</span> : <span class="hljs-keyword">public</span> Base &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Derived show&quot;</span> &lt;&lt; std::endl; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Base* basePtr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Derived</span>();<br>    basePtr-&gt;<span class="hljs-built_in">show</span>();  <span class="hljs-comment">// 调用 Derived 的 show()</span><br>    <span class="hljs-keyword">delete</span> basePtr;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3><span id="多态的实现方式">多态的实现方式</span></h3><ul>
+<li><strong>继承与虚函数</strong>：<ul>
+<li>基类中声明函数为 <code>virtual</code>，派生类可以重写该函数。当通过基类指针或引用调用该函数时，程序会动态选择执行派生类的版本。这种机制称为<strong>运行时多态</strong>或<strong>动态绑定</strong>。</li>
+</ul>
+</li>
+<li><strong>接口与抽象类</strong>：<ul>
+<li>抽象类中包含纯虚函数，派生类必须实现这些函数。通过抽象类的指针或引用调用这些函数时，可以实现不同派生类的不同实现。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="多态的优势">多态的优势</span></h3><ul>
+<li><strong>灵活性</strong>：<ul>
+<li>通过多态，可以编写更加通用和灵活的代码。例如，使用基类指针可以操作任何派生类的对象，而不需要了解具体的派生类类型。</li>
+</ul>
+</li>
+<li><strong>代码可扩展性</strong>：<ul>
+<li>新的派生类可以直接继承基类，并通过重写虚函数来提供新的行为，而无需修改现有代码。</li>
+</ul>
+</li>
+<li><strong>简化代码</strong>：<ul>
+<li>通过接口和抽象类可以定义公共行为，而具体实现由派生类提供，简化了代码结构。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="总结">总结</span></h3><p>多态是 OOP 的核心特性之一，它允许相同的接口在不同情况下表现出不同的行为。通过继承和虚函数实现的运行时多态，使得程序可以在不改变接口的情况下实现代码的灵活性和可扩展性。在 C++ 中，多态的典型实现方式包括虚函数和抽象基类。</p>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>Author：</strong>WangChengGang<br>
-        <strong>Link：</strong><a href="http://example.com/2024/08/14/hello-world/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;</a><br>
+        <strong>Link：</strong><a href="http://example.com/2024/08/27/%E3%80%90C++%E3%80%91%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E6%80%81/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】什么是多态&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】什么是多态&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         

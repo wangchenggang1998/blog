@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> Hello World -  wangchenggang&#39;s Blogs</title>
+		<title> wangchenggang&#39;s Blogs</title>
 		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
 		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
 		
@@ -310,37 +310,61 @@
 			<img
 				data-src="https://w.wallhaven.cc/full/73/wallhaven-73mzme.jpg"
 				data-sizes="auto"
-				alt="Hello World"
+				alt=""
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>Hello World</h1>
+			<h1></h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2024年08月14日</a>
-			<a><i class="kirafont icon-edit-fill"></i>75 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年08月27日</a>
+			<a><i class="kirafont icon-edit-fill"></i>873 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
 		</div>
-		<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+		<p>下是 <code>static</code> 关键字在 C++ 中的几个主要用途及其优点：</p>
+<h3><span id="1-静态局部变量">1. <strong>静态局部变量</strong></span></h3><ul>
+<li><strong>作用</strong>：<code>static</code> 可以修饰函数内部的局部变量，使该变量在函数的多次调用之间保持其值，而不是每次调用时重新创建。</li>
+<li><strong>生命周期</strong>：静态局部变量的生命周期从程序启动到程序结束，即使函数结束后，变量仍然保留其值，下次调用时继续使用之前的值。</li>
+<li><strong>优点</strong>：可以在多个函数调用之间共享状态，而不需要使用全局变量，从而提高了代码的封装性。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>; <span class="hljs-comment">// 只在第一次调用时初始化</span><br>    count++;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Count: &quot;</span> &lt;&lt; count &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<h3><span id="2-静态成员变量">2. <strong>静态成员变量</strong></span></h3><ul>
+<li><strong>作用</strong>：类中的 <code>static</code> 成员变量在所有对象间共享，属于整个类，而不是某个对象。无论创建多少个对象，静态成员变量在内存中只占用一份空间。</li>
+<li><strong>优点</strong>：可以在多个对象之间共享数据，且可以在类的外部通过类名直接访问静态成员变量，而不需要通过对象。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> count; <span class="hljs-comment">// 静态成员变量</span><br>&#125;;<br><span class="hljs-type">int</span> MyClass::count = <span class="hljs-number">0</span>; <span class="hljs-comment">// 静态成员变量初始化</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h3><span id="3-静态成员函数">3. <strong>静态成员函数</strong></span></h3><ul>
+<li><strong>作用</strong>：<code>static</code> 成员函数可以在没有对象的情况下调用，通常用于不依赖于对象实例的操作。静态成员函数只能访问静态成员变量，不能访问非静态的成员变量或成员函数，因为它没有 <code>this</code> 指针。</li>
+<li><strong>优点</strong>：提供了与对象无关的接口，可以用于工厂方法、单例模式等设计模式中，增加了类的灵活性。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">printCount</span><span class="hljs-params">()</span> </span>&#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;Count: &quot;</span> &lt;&lt; count &lt;&lt; std::endl;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> count;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<h3><span id="4-静态全局变量">4. <strong>静态全局变量</strong></span></h3><ul>
+<li><strong>作用</strong>：当 <code>static</code> 用于修饰全局变量时，这个变量的作用域仅限于定义它的文件（即文件内链接），它不能被其他文件访问。这可以有效地防止命名冲突和全局变量的滥用。</li>
+<li><strong>优点</strong>：提高了代码的封装性和安全性，避免了不必要的全局变量暴露在外部。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// file1.cpp</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// 只能在 file1.cpp 内部访问</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3><span id="5-静态函数">5. <strong>静态函数</strong></span></h3><ul>
+<li><strong>作用</strong>：当 <code>static</code> 修饰函数时，该函数的作用域也仅限于定义它的文件。与静态全局变量类似，静态函数不能被其他文件直接调用。</li>
+<li><strong>优点</strong>：同样提高了代码的封装性和模块化，防止命名冲突。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// file1.cpp</span><br><span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 只能在 file1.cpp 内部调用</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3><span id="6-静态存储时长">6. <strong>静态存储时长</strong></span></h3><ul>
+<li><strong>作用</strong>：所有使用 <code>static</code> 关键字修饰的变量或函数都具有静态存储时长，即它们在程序的整个生命周期内都存在，直到程序结束才被销毁。</li>
+<li><strong>优点</strong>：提供了持久的存储时长，可以在整个程序运行期间保持状态信息。</li>
+</ul>
+<h3><span id="总结">总结</span></h3><p><code>static</code> 关键字在 C++ 中有多种用途，包括控制变量的存储时长和作用域、实现类级别的成员变量和成员函数、以及提高代码的封装性和安全性。了解和正确使用 <code>static</code> 可以帮助编写出更高效、更模块化、更易维护的代码。</p>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>Author：</strong>WangChengGang<br>
-        <strong>Link：</strong><a href="http://example.com/2024/08/14/hello-world/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;</a><br>
+        <strong>Link：</strong><a href="http://example.com/2024/08/27/%E3%80%90C++%E3%80%91static/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】static&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;27&#x2F;【C++】static&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         

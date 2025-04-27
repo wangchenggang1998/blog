@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html 
+	lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 【QT】qt信号与槽 -  wangchenggang&#39;s Blogs</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://logotyp.us/file/c-plus-plus.svg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&amp;w=750&amp;q=75')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="wangchenggang&#39;s Blogs">
+        <img
+			src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+			alt="WangChengGang"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif" title="WangChengGang">
+			<img
+				src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+				alt="WangChengGang"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>19</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=888888888"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/374634716"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/wangchenggang1998"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/wangchenggang98"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			Archive
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">2</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">WangChengGang</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&w=750&q=75"
+				data-sizes="auto"
+				alt="【QT】qt信号与槽"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>【QT】qt信号与槽</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2025年04月28日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.9k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 8 分钟</a>
+		</div>
+		<h1><span id="qt信号和槽的本质是什么">Qt信号和槽的本质是什么</span></h1><p>Qt 中的信号和槽（Signals and Slots）机制是一个核心特性，用于实现对象之间的通信。它允许对象之间松散耦合的通信方式，使得一个对象可以在不依赖另一个对象的情况下发出信号，而另一个对象可以选择接收并处理这些信号。</p>
+<h3><span id="信号和槽的本质">信号和槽的本质</span></h3><ol>
+<li><strong>信号（Signal）</strong>:<ul>
+<li>本质上，信号是类中的一个函数，当某个特定的事件发生时，这个函数会被调用。信号通常没有返回值，并且可以有任意数量的参数。</li>
+<li>在 Qt 的实现中，信号其实是由宏 <code>signals:</code> 声明的类成员函数，但在编译时会被 Qt 的元对象系统（Meta-Object System, MOC）处理成一些特定的代码，以实现信号的功能。</li>
+</ul>
+</li>
+<li><strong>槽（Slot）</strong>:<ul>
+<li>槽是一个普通的类成员函数，可以在类内部定义为 public, protected, 或 private。槽函数可以接收信号传递的参数，并在信号触发时执行特定的操作。</li>
+<li>槽函数是普通的 C++ 函数，但它们通过 <code>slots:</code> 关键字声明，这样 Qt 可以将它们与信号关联起来。</li>
+</ul>
+</li>
+<li><strong>连接信号和槽</strong>:<ul>
+<li>通过 <code>QObject::connect()</code> 函数，可以将信号与槽关联（连接）起来。当信号发出时，Qt 会调用连接到该信号的槽函数。</li>
+<li>这种连接是由 <code>QObject::connect()</code> 函数完成的，该函数会记录信号和槽之间的关系，并在信号触发时调用槽函数。</li>
+</ul>
+</li>
+<li><strong>元对象系统 (Meta-Object System)</strong>:<ul>
+<li>Qt 的信号和槽机制依赖于 Qt 的元对象系统，该系统是由 MOC (Meta-Object Compiler) 实现的。MOC 会处理使用了 Qt 宏的头文件，并生成与信号和槽机制相关的元对象代码。</li>
+<li>每个继承自 <code>QObject</code> 的类都会有一个关联的元对象（Meta-Object），其中包含了类的元信息（如信号、槽、属性等），并支持信号和槽的动态调用。</li>
+</ul>
+</li>
+<li><strong>信号发射和槽调用的实现</strong>:<ul>
+<li>当一个信号被发射（emit）时，Qt 的底层实现会查找所有连接到该信号的槽，并依次调用这些槽函数。这个过程通过元对象系统来实现。</li>
+<li>如果信号和槽在同一个线程中，槽函数会立即被调用（同步调用）。如果信号和槽在不同的线程中，Qt 会将槽函数的调用封装成事件并通过事件队列传递，从而在线程之间进行异步调用。</li>
+</ul>
+</li>
+</ol>
+<h3><span id="信号和槽的优点">信号和槽的优点</span></h3><ul>
+<li><strong>松散耦合</strong>: 信号和槽机制允许对象之间的松散耦合，一个对象可以发出信号，而不知道哪个对象接收和处理这个信号。</li>
+<li><strong>类型安全</strong>: Qt 的信号和槽机制是类型安全的，在编译时进行检查，确保信号和槽的参数类型匹配。</li>
+<li><strong>跨线程通信</strong>: Qt 的信号和槽机制支持跨线程通信，通过事件队列可以安全地在不同线程之间传递信号。</li>
+</ul>
+<h3><span id="代码示例">代码示例</span></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QObject&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> : <span class="hljs-keyword">public</span> QObject &#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MyClass</span>() &#123;&#125;<br><br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">mySignal</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span></span>; <span class="hljs-comment">// 定义信号</span><br><br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">mySlot</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span> </span>&#123;  <span class="hljs-comment">// 定义槽函数</span><br>        <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Slot called with value:&quot;</span> &lt;&lt; value;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span> </span>&#123;<br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc, argv)</span></span>;<br>    <br>    MyClass obj;<br>    QObject::<span class="hljs-built_in">connect</span>(&amp;obj, &amp;MyClass::mySignal, &amp;obj, &amp;MyClass::mySlot);<br><br>    emit obj.<span class="hljs-built_in">mySignal</span>(<span class="hljs-number">42</span>); <span class="hljs-comment">// 触发信号</span><br><br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>MyClass</code> 定义了一个信号 <code>mySignal</code> 和一个槽函数 <code>mySlot</code>。在 <code>main</code> 函数中，信号和槽通过 <code>QObject::connect()</code> 连接在一起。当信号 <code>mySignal</code> 被发射时，槽函数 <code>mySlot</code> 会被调用并打印输出。</p>
+<h3><span id="总结">总结</span></h3><p>Qt 的信号和槽机制是通过元对象系统实现的，信号是特定事件发生时的通知，槽是响应信号的函数。信号和槽的连接允许对象之间的松散耦合，支持跨线程通信，并在应用程序中广泛用于处理事件和响应用户交互。</p>
+<h1><span id="qt的五种连接方式x2fqt连接的五个参数">qt的五种连接方式&#x2F;qt连接的五个参数？</span></h1><p>在 Qt 中，信号和槽的连接方式有五种，分别对应于 <code>QObject::connect()</code> 函数的第五个参数，该参数指定了信号与槽之间的调用方式。这个参数的类型是 <code>Qt::ConnectionType</code>，它决定了信号发出时如何调用槽函数。</p>
+<h3><span id="1-qtautoconnection">1. <code>Qt::AutoConnection</code></span></h3><ul>
+<li><strong>描述</strong>: 这是默认的连接类型。它根据信号和槽是否在同一个线程中自动选择合适的连接方式。</li>
+<li>行为:<ul>
+<li>如果信号和槽在同一个线程中，使用直接连接 (<code>Qt::DirectConnection</code>)。</li>
+<li>如果信号和槽在不同的线程中，使用队列连接 (<code>Qt::QueuedConnection</code>)。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="2-qtdirectconnection">2. <code>Qt::DirectConnection</code></span></h3><ul>
+<li><strong>描述</strong>: 信号发出时，槽函数立即在信号发出者的线程中被调用。也就是说，槽函数在发出信号的上下文中直接执行。</li>
+<li><strong>适用场景</strong>: 当你希望槽函数在信号发出时立即执行，并且信号和槽在同一个线程中时使用。</li>
+</ul>
+<h3><span id="3-qtqueuedconnection">3. <code>Qt::QueuedConnection</code></span></h3><ul>
+<li><strong>描述</strong>: 信号发出时，槽函数的调用被封装成一个事件，并放入接收者线程的事件队列中。槽函数将在接收者线程的事件循环中执行。</li>
+<li><strong>适用场景</strong>: 当信号和槽位于不同线程时，或者希望槽函数在发出信号的线程以外的线程中执行时使用。</li>
+</ul>
+<h3><span id="4-qtblockingqueuedconnection">4. <code>Qt::BlockingQueuedConnection</code></span></h3><ul>
+<li><strong>描述</strong>: 类似于 <code>Qt::QueuedConnection</code>，但发出信号的线程会被阻塞，直到槽函数在接收者线程中执行完毕。这个连接类型只能用于跨线程连接。</li>
+<li><strong>适用场景</strong>: 当信号和槽在不同的线程中，并且发出信号的线程必须等待槽函数完成时使用。</li>
+<li><strong>注意</strong>: 使用不当可能导致死锁。</li>
+</ul>
+<h3><span id="5-qtuniqueconnection">5. <code>Qt::UniqueConnection</code></span></h3><ul>
+<li><p><strong>描述</strong>: 这个标志可以与其他连接类型一起使用，确保同一对信号和槽之间只能有一个连接。如果尝试建立重复连接，它将会失败。</p>
+</li>
+<li><p>适用场景</p>
+<p>: 当你想要避免重复连接时使用。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(sender, &amp;Sender::signal, receiver, &amp;Receiver::slot, Qt::UniqueConnection);<br></code></pre></td></tr></table></figure>
+
+<p>这种方式可以与 Qt::AutoConnection、Qt::DirectConnection、Qt::QueuedConnection 以及 Qt::BlockingQueuedConnection 组合使用。</p>
+</li>
+</ul>
+<h3><span id="qobjectconnect-的五个参数"><code>QObject::connect</code> 的五个参数</span></h3><ol>
+<li><strong>Sender Object (发送者对象)</strong>:<ul>
+<li>指向发出信号的对象的指针。</li>
+</ul>
+</li>
+<li><strong>Signal (信号)</strong>:<ul>
+<li>信号的指针或成员指针。指定发出的信号。</li>
+</ul>
+</li>
+<li><strong>Receiver Object (接收者对象)</strong>:<ul>
+<li>指向接收信号的对象的指针。</li>
+</ul>
+</li>
+<li><strong>Slot (槽函数)</strong>:<ul>
+<li>槽函数的指针或成员指针。指定当信号发出时要调用的函数。</li>
+</ul>
+</li>
+<li><strong>Connection Type (连接类型)</strong>:<ul>
+<li>指定信号和槽之间的调用方式。使用 <code>Qt::ConnectionType</code> 枚举值，如 <code>Qt::AutoConnection</code>、<code>Qt::DirectConnection</code>、<code>Qt::QueuedConnection</code> 等。</li>
+</ul>
+</li>
+</ol>
+<h3><span id="代码示例">代码示例</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QCoreApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QObject&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyObject</span> : <span class="hljs-keyword">public</span> QObject &#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MyObject</span>() &#123;&#125;<br><br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">mySignal</span><span class="hljs-params">()</span></span>;<br><br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">mySlot</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Slot executed in thread:&quot;</span> &lt;&lt; QThread::<span class="hljs-built_in">currentThread</span>();<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span> </span>&#123;<br>    <span class="hljs-function">QCoreApplication <span class="hljs-title">app</span><span class="hljs-params">(argc, argv)</span></span>;<br><br>    MyObject obj;<br><br>    <span class="hljs-comment">// 使用默认的自动连接方式</span><br>    QObject::<span class="hljs-built_in">connect</span>(&amp;obj, &amp;MyObject::mySignal, &amp;obj, &amp;MyObject::mySlot, Qt::AutoConnection);<br><br>    emit obj.<span class="hljs-built_in">mySignal</span>(); <span class="hljs-comment">// 触发信号</span><br><br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，使用了 <code>Qt::AutoConnection</code> 作为连接类型，确保信号和槽在合适的上下文中执行。</p>
+<h3><span id="总结">总结</span></h3><ul>
+<li>Qt 提供了五种信号和槽的连接方式，分别是 <code>Qt::AutoConnection</code>、<code>Qt::DirectConnection</code>、<code>Qt::QueuedConnection</code>、<code>Qt::BlockingQueuedConnection</code> 和 <code>Qt::UniqueConnection</code>。</li>
+<li>选择合适的连接类型可以确保信号和槽在正确的上下文中执行，满足应用的不同需求。</li>
+</ul>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>Author：</strong>WangChengGang<br>
+        <strong>Link：</strong><a href="http://example.com/2025/04/28/%E3%80%90QT%E3%80%91qt%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/" title="http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt信号与槽&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt信号与槽&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

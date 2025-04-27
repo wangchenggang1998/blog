@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html 
+	lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 【QT】qt线程同步的方式 -  wangchenggang&#39;s Blogs</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://logotyp.us/file/c-plus-plus.svg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&amp;w=750&amp;q=75')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="wangchenggang&#39;s Blogs">
+        <img
+			src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+			alt="WangChengGang"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif" title="WangChengGang">
+			<img
+				src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+				alt="WangChengGang"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>19</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=888888888"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/374634716"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/wangchenggang1998"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/wangchenggang98"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			Archive
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">2</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">WangChengGang</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&w=750&q=75"
+				data-sizes="auto"
+				alt="【QT】qt线程同步的方式"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>【QT】qt线程同步的方式</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2025年04月28日</a>
+			<a><i class="kirafont icon-edit-fill"></i>851 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
+		</div>
+		<p>在 Qt 中，线程同步是为了确保多个线程在访问共享资源时不发生数据竞争或其他并发问题。Qt 提供了多种方式来实现线程同步，包括锁、条件变量和信号槽机制。以下是 Qt 中常用的线程同步方式：</p>
+<h3><span id="1-qmutex-互斥锁">1. <strong>QMutex (互斥锁)</strong></span></h3><p><code>QMutex</code> 是最常用的线程同步工具，确保同一时间只有一个线程可以访问共享资源。</p>
+<ul>
+<li><p><strong>使用方法</strong>：</p>
+<ul>
+<li><code>lock()</code>: 锁定互斥锁。如果已经被锁定，则调用线程会阻塞，直到互斥锁被解锁。</li>
+<li><code>unlock()</code>: 解锁互斥锁，允许其他线程访问。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QMutex mutex;<br><span class="hljs-comment">// 在一个线程中</span><br>mutex.<span class="hljs-built_in">lock</span>();<br><span class="hljs-comment">// 访问共享资源</span><br>mutex.<span class="hljs-built_in">unlock</span>();<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>QMutexLocker</strong>: <code>QMutexLocker</code> 是一个辅助类，可以自动锁定和解锁 <code>QMutex</code>，确保在作用域结束时互斥锁自动解锁。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QMutex mutex;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">someFunction</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">QMutexLocker <span class="hljs-title">locker</span><span class="hljs-params">(&amp;mutex)</span></span>;<br>    <span class="hljs-comment">// 访问共享资源</span><br>&#125; <span class="hljs-comment">// 这里自动解锁</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="2-qreadwritelock-读写锁">2. <strong>QReadWriteLock (读写锁)</strong></span></h3><p><code>QReadWriteLock</code> 允许多个线程同时读取共享资源，但在写入时，只有一个线程可以访问。</p>
+<ul>
+<li><p><strong>使用方法</strong>：</p>
+<ul>
+<li><code>lockForRead()</code>: 锁定为读锁，允许多个线程同时读取。</li>
+<li><code>lockForWrite()</code>: 锁定为写锁，独占访问。</li>
+<li><code>unlock()</code>: 解锁读写锁。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QReadWriteLock lock;<br><span class="hljs-comment">// 读操作</span><br>lock.<span class="hljs-built_in">lockForRead</span>();<br><span class="hljs-comment">// 读取共享资源</span><br>lock.<span class="hljs-built_in">unlock</span>();<br><br><span class="hljs-comment">// 写操作</span><br>lock.<span class="hljs-built_in">lockForWrite</span>();<br><span class="hljs-comment">// 写入共享资源</span><br>lock.<span class="hljs-built_in">unlock</span>();<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-qsemaphore-信号量">3. <strong>QSemaphore (信号量)</strong></span></h3><p><code>QSemaphore</code> 用于限制线程对资源的访问数量。信号量管理一个计数器，用于表示可用资源的数量。</p>
+<ul>
+<li><p><strong>使用方法</strong>：</p>
+<ul>
+<li><code>acquire(int n = 1)</code>: 请求 n 个资源，如果资源不足则阻塞线程。</li>
+<li><code>release(int n = 1)</code>: 释放 n 个资源。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">QSemaphore <span class="hljs-title">semaphore</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span></span>; <span class="hljs-comment">// 最多允许3个线程同时访问</span><br><br><span class="hljs-comment">// 在线程中</span><br>semaphore.<span class="hljs-built_in">acquire</span>(); <span class="hljs-comment">// 请求资源</span><br><span class="hljs-comment">// 访问共享资源</span><br>semaphore.<span class="hljs-built_in">release</span>(); <span class="hljs-comment">// 释放资源</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="4-qwaitcondition-条件变量">4. <strong>QWaitCondition (条件变量)</strong></span></h3><p><code>QWaitCondition</code> 允许线程等待某个条件的发生，然后继续执行。它通常与 <code>QMutex</code> 一起使用。</p>
+<ul>
+<li><p><strong>使用方法</strong>：</p>
+<ul>
+<li><code>wait(QMutex *mutex)</code>: 使线程进入等待状态，并解锁传入的 <code>QMutex</code>，等待条件变量触发。</li>
+<li><code>wakeOne()</code>: 唤醒一个等待该条件变量的线程。</li>
+<li><code>wakeAll()</code>: 唤醒所有等待该条件变量的线程。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QMutex mutex;<br>QWaitCondition condition;<br><br><span class="hljs-comment">// 在线程1中</span><br>mutex.<span class="hljs-built_in">lock</span>();<br>condition.<span class="hljs-built_in">wait</span>(&amp;mutex); <span class="hljs-comment">// 等待条件</span><br><span class="hljs-comment">// 被唤醒后执行</span><br>mutex.<span class="hljs-built_in">unlock</span>();<br><br><span class="hljs-comment">// 在线程2中</span><br>mutex.<span class="hljs-built_in">lock</span>();<br>condition.<span class="hljs-built_in">wakeOne</span>(); <span class="hljs-comment">// 唤醒一个等待线程</span><br>mutex.<span class="hljs-built_in">unlock</span>();<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="5-qt-信号与槽机制">5. <strong>Qt 信号与槽机制</strong></span></h3><p>信号与槽机制不仅可以用于对象间的通信，还可以用于线程间的同步。尤其是当信号和槽位于不同线程时，Qt 会自动使用事件队列和异步机制来进行线程间的通信和同步。</p>
+<ul>
+<li><p>示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Worker</span> : <span class="hljs-keyword">public</span> QObject &#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">doWork</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 执行一些工作</span><br>        <span class="hljs-function">emit <span class="hljs-title">workDone</span><span class="hljs-params">()</span></span>;<br>    &#125;<br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">workDone</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br>QThread workerThread;<br>Worker worker;<br>worker.<span class="hljs-built_in">moveToThread</span>(&amp;workerThread);<br><br>QObject::<span class="hljs-built_in">connect</span>(&amp;workerThread, &amp;QThread::started, &amp;worker, &amp;Worker::doWork);<br>QObject::<span class="hljs-built_in">connect</span>(&amp;worker, &amp;Worker::workDone, &amp;workerThread, &amp;QThread::quit);<br><br>workerThread.<span class="hljs-built_in">start</span>();<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="6-qatomicintegerx2fqatomicpointer-原子操作">6. <strong>QAtomicInteger&#x2F;QAtomicPointer (原子操作)</strong></span></h3><p>对于一些简单的计数器或指针操作，可以使用 <code>QAtomicInteger</code> 和 <code>QAtomicPointer</code> 进行线程安全的原子操作。</p>
+<ul>
+<li><p>示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QAtomicInt atomicCounter;<br>atomicCounter.<span class="hljs-built_in">fetchAndAddRelaxed</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// 原子递增</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="总结">总结</span></h3><p>Qt 提供了多种线程同步机制，包括 <code>QMutex</code>、<code>QSemaphore</code>、<code>QWaitCondition</code>、<code>QReadWriteLock</code>、信号与槽以及原子操作等。这些工具可以根据不同的场景和需求来确保线程安全，防止并发问题的发生。</p>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>Author：</strong>WangChengGang<br>
+        <strong>Link：</strong><a href="http://example.com/2025/04/28/%E3%80%90QT%E3%80%91qt%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F/" title="http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt线程同步的方式&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt线程同步的方式&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

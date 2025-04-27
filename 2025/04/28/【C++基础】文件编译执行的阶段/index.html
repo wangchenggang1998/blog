@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> Hello World -  wangchenggang&#39;s Blogs</title>
+		<title> 【C++基础】文件编译执行的阶段 -  wangchenggang&#39;s Blogs</title>
 		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
 		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
 		
@@ -310,37 +310,59 @@
 			<img
 				data-src="https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&w=750&q=75"
 				data-sizes="auto"
-				alt="Hello World"
+				alt="【C++基础】文件编译执行的阶段"
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>Hello World</h1>
+			<h1>【C++基础】文件编译执行的阶段</h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2024年08月14日</a>
-			<a><i class="kirafont icon-edit-fill"></i>75 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2025年04月28日</a>
+			<a><i class="kirafont icon-edit-fill"></i>708 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
-		<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+		<p>C++ 文件的编译和执行过程可以分为以下几个主要阶段：</p>
+<h3><span id="1-预处理preprocessing">1. <strong>预处理（Preprocessing）</strong></span></h3><ul>
+<li><strong>作用</strong>：预处理阶段主要负责处理源代码中的预处理指令，如宏定义、文件包含、条件编译等。预处理器会对代码中的 <code>#include</code>、<code>#define</code>、<code>#ifdef</code> 等指令进行处理。</li>
+<li><strong>结果</strong>：生成一个单独的源文件，这个文件是去掉了所有预处理指令后的代码文本，通常用 <code>.i</code> 后缀表示。</li>
+<li><strong>工具</strong>：预处理器 (<code>cpp</code>)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 预处理指令示例</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> PI 3.14</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<h3><span id="2-编译compilation">2. <strong>编译（Compilation）</strong></span></h3><ul>
+<li><strong>作用</strong>：编译阶段将预处理后的代码翻译成汇编代码。编译器将源代码中的高级语言代码（如 C++ 语句）转换为相应的汇编指令，这些指令是特定于目标 CPU 架构的。</li>
+<li><strong>结果</strong>：生成汇编代码文件，通常以 <code>.s</code> 后缀表示。</li>
+<li><strong>工具</strong>：编译器 (<code>gcc</code>, <code>g++</code>)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// C++ 源代码</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h3><span id="3-汇编assembly">3. <strong>汇编（Assembly）</strong></span></h3><ul>
+<li><strong>作用</strong>：汇编阶段将编译器生成的汇编代码转换为目标机器代码，也就是二进制的指令集，这些指令是特定于计算机硬件的。</li>
+<li><strong>结果</strong>：生成目标文件，通常以 <code>.o</code>（在 Linux&#x2F;Unix 系统上）或 <code>.obj</code>（在 Windows 系统上）为后缀的文件。这些文件是机器码，但还不是完整的可执行文件。</li>
+<li><strong>工具</strong>：汇编器 (<code>as</code>)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">// 汇编代码示例（假设为 x86 架构）<br>mov eax, 5<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<h3><span id="4-链接linking">4. <strong>链接（Linking）</strong></span></h3><ul>
+<li><strong>作用</strong>：链接阶段将一个或多个目标文件与所需的库文件链接起来，生成最终的可执行文件。链接器会处理外部符号解析、地址重定位等任务，并将不同的代码和数据段组合成一个可执行程序。</li>
+<li><strong>结果</strong>：生成可执行文件，通常在 Linux&#x2F;Unix 系统上以无扩展名或 <code>.out</code> 作为后缀，在 Windows 系统上以 <code>.exe</code> 作为后缀。</li>
+<li><strong>工具</strong>：链接器 (<code>ld</code>)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 链接示例<br>g++ main.o -o main<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3><span id="5-加载和执行loading-and-execution">5. <strong>加载和执行（Loading and Execution）</strong></span></h3><ul>
+<li><strong>作用</strong>：加载器（Loader）负责将可执行文件加载到内存中，设置好程序的堆栈、堆和代码段，然后将控制权交给操作系统，程序开始执行。</li>
+<li><strong>结果</strong>：程序开始运行，并按照代码逻辑执行操作。</li>
+<li><strong>工具</strong>：加载器由操作系统管理，通常是透明的。</li>
+</ul>
+<h3><span id="总结">总结</span></h3><p>C++ 文件的编译执行过程主要包括以下几个阶段：预处理、编译、汇编、链接和加载执行。每个阶段都有其独特的作用和生成的中间文件。这些阶段协同工作，最终将人类可读的源代码转换为计算机可执行的二进制文件。</p>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>Author：</strong>WangChengGang<br>
-        <strong>Link：</strong><a href="http://example.com/2024/08/14/hello-world/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;08&#x2F;14&#x2F;hello-world&#x2F;</a><br>
+        <strong>Link：</strong><a href="http://example.com/2025/04/28/%E3%80%90C++%E5%9F%BA%E7%A1%80%E3%80%91%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C%E7%9A%84%E9%98%B6%E6%AE%B5/" title="http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【C++基础】文件编译执行的阶段&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【C++基础】文件编译执行的阶段&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         

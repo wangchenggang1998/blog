@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html 
+	lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 【C++】指针和引用区别？ -  wangchenggang&#39;s Blogs</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://logotyp.us/file/c-plus-plus.svg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&amp;w=750&amp;q=75')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="wangchenggang&#39;s Blogs">
+        <img
+			src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+			alt="WangChengGang"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif" title="WangChengGang">
+			<img
+				src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+				alt="WangChengGang"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>19</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=888888888"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/374634716"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/wangchenggang1998"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/wangchenggang98"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			Archive
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">2</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">WangChengGang</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&w=750&q=75"
+				data-sizes="auto"
+				alt="【C++】指针和引用区别？"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>【C++】指针和引用区别？</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2025年04月28日</a>
+			<a><i class="kirafont icon-edit-fill"></i>943 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 4 分钟</a>
+		</div>
+		<h1><span id="指针和引用有什么区别">指针和引用有什么区别</span></h1><p>指针和引用是 C++ 中两种重要的概念，尽管它们都用于间接访问对象，但它们有不同的语法、行为和用途。下面是指针和引用的主要区别：</p>
+<h3><span id="1-定义方式">1. <strong>定义方式</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>指针是一个变量，它存储另一个变量的地址。</li>
+<li>指针的定义使用 <code>*</code> 符号。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>* ptr = &amp;a;  <span class="hljs-comment">// ptr 是一个指针，指向变量 a 的地址</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>引用是一个别名，它本质上是某个已存在变量的另一种访问方式。</li>
+<li>引用的定义使用 <code>&amp;</code> 符号。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>&amp; ref = a;  <span class="hljs-comment">// ref 是 a 的引用，ref 和 a 指向同一个内存位置</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="2-初始化">2. <strong>初始化</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>指针可以在声明时不初始化，也可以指向 <code>nullptr</code>，表示它不指向任何有效的对象。</li>
+<li>指针可以在程序的不同时间指向不同的对象。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-type">int</span>* ptr = <span class="hljs-literal">nullptr</span>;  <span class="hljs-comment">// ptr 目前不指向任何对象</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>引用必须在定义时初始化，并且初始化后不能改变所引用的对象。</li>
+<li>引用必须引用某个有效的对象，不能是 <code>nullptr</code>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-type">int</span>&amp; ref = a;  <span class="hljs-comment">// ref 必须在声明时初始化，且不能更改引用的对象</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="3-指向对象的更改">3. <strong>指向对象的更改</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>可以在程序中通过修改指针的值来改变它指向的对象。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> b = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span>* ptr = &amp;a;<br>ptr = &amp;b;  <span class="hljs-comment">// 现在 ptr 指向 b</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>一旦引用被初始化，它就绑定到它所引用的对象，无法更改引用的对象。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> b = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span>&amp; ref = a;<br>ref = b;  <span class="hljs-comment">// 这是改变 a 的值，而不是改变 ref 的引用对象</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="4-内存占用">4. <strong>内存占用</strong></span></h3><ul>
+<li><strong>指针</strong>：<ul>
+<li>指针本身占用内存，因为它存储了另一个对象的地址。</li>
+</ul>
+</li>
+<li><strong>引用</strong>：<ul>
+<li>引用通常不占用内存，它只是一个别名。但实现上，编译器可能会把引用实现为指针，因此在一些情况下，引用也可能占用内存。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="5-空值处理">5. <strong>空值处理</strong></span></h3><ul>
+<li><strong>指针</strong>：<ul>
+<li>指针可以指向 <code>nullptr</code>，表示它不指向任何对象。</li>
+</ul>
+</li>
+<li><strong>引用</strong>：<ul>
+<li>引用不能为 <code>nullptr</code>，必须引用某个有效的对象。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="6-数组和动态内存分配">6. <strong>数组和动态内存分配</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>指针可以用于指向数组或动态分配的内存。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-type">int</span>* arr = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[<span class="hljs-number">10</span>];  <span class="hljs-comment">// 动态分配一个数组，并用指针指向它</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>引用不能指向数组的元素（虽然可以引用数组的元素）或动态分配的内存。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> arr[<span class="hljs-number">10</span>];<br><span class="hljs-type">int</span>&amp; ref = arr[<span class="hljs-number">0</span>];  <span class="hljs-comment">// 引用数组的第一个元素</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="7-运算符">7. <strong>运算符</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>指针可以进行算术运算（如加法、减法），这在处理数组时非常有用。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-type">int</span>* ptr = arr;<br>ptr++;  <span class="hljs-comment">// ptr 现在指向 arr[1]</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>引用不能进行算术运算，也不支持类似的操作。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="8-函数参数传递">8. <strong>函数参数传递</strong></span></h3><ul>
+<li><p><strong>指针</strong>：</p>
+<ul>
+<li>指针可以用于函数参数传递，允许在函数中修改传递的对象。</li>
+<li>需要小心处理空指针和指针的有效性。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">(<span class="hljs-type">int</span>* p)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (p != <span class="hljs-literal">nullptr</span>) &#123;<br>        *p = <span class="hljs-number">20</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用</strong>：</p>
+<ul>
+<li>引用也可以用于函数参数传递，允许函数修改传递的对象。</li>
+<li>不存在空引用的问题，引用必须是有效的。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">(<span class="hljs-type">int</span>&amp; r)</span> </span>&#123;<br>    r = <span class="hljs-number">20</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3><span id="总结">总结</span></h3><ul>
+<li><strong>指针</strong> 更加灵活，可以指向不同的对象，允许进行指针运算，可以指向 <code>nullptr</code>，适合动态内存管理和数组处理。</li>
+<li><strong>引用</strong> 更加安全，语法上更简洁，不需要考虑空引用的问题，但绑定后不能更改所引用的对象，适合函数参数传递和对象别名。</li>
+</ul>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>Author：</strong>WangChengGang<br>
+        <strong>Link：</strong><a href="http://example.com/2025/04/28/%E3%80%90C++%E3%80%91%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E5%8C%BA%E5%88%AB%EF%BC%9F/" title="http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【C++】指针和引用区别？&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【C++】指针和引用区别？&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html 
+	lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 【QT】qt开启线程的五种方式 -  wangchenggang&#39;s Blogs</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://logotyp.us/file/c-plus-plus.svg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&amp;w=750&amp;q=75')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="wangchenggang&#39;s Blogs">
+        <img
+			src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+			alt="WangChengGang"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif" title="WangChengGang">
+			<img
+				src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2055500/9fa2a22c70382fcc6658728d23759d1fa36bd61f.gif"
+				alt="WangChengGang"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>19</div>
+		<div><span>标签</span>0</div>
+		<div><span>分类</span>0</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=888888888"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/374634716"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/wangchenggang1998"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/wangchenggang98"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+		
+			
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			Archive
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">2</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">WangChengGang</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2Fd%2F1%2F7%2F8%2F1%2F1d1781a912f6914c5868f855b56bd574bb19f58b.jpg&w=750&q=75"
+				data-sizes="auto"
+				alt="【QT】qt开启线程的五种方式"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>【QT】qt开启线程的五种方式</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2025年04月28日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.9k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 9 分钟</a>
+		</div>
+		<h1><span id="1继承-qthread-重写-run-函数">1.继承 QThread 重写 run 函数</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Thread</span> : <span class="hljs-keyword">public</span> QThread<br>&#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Thread::run</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	...<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>可调用 <code>thread.start()</code>启动线程，会自动调用 run 函数</li>
+<li>可调用 <code>thread.isRunning()</code>判断线程是否已启动</li>
+<li>可调用 <code>thread.terminate()</code>终止线程</li>
+<li>可调用 <code>thread.wait()</code>等待线程终止</li>
+</ul>
+<h1><span id="2继承-qobject-调用-movetothread">2.继承 QObject 调用 moveToThread</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> : <span class="hljs-keyword">public</span> QObject<br>&#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C++">QThread th;<br>Test test;<br>test.<span class="hljs-built_in">moveToThread</span>(&amp;th);<br><br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是：<strong>此方法与继承 QThread 相比较，继承 QThread 只有 run 函数中的操作是在线程中执行的，而此方法中所有的成员函数都是在线程中执行</strong></p>
+<h1><span id="3继承-qrunnable-重新-run-函数结合-qthreadpool-实现线程池">3.继承 QRunnable 重新 run 函数，结合 QThreadPool 实现线程池</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QCoreApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QObject&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QRunnable&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThreadPool&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyTask</span> : <span class="hljs-keyword">public</span> QRunnable<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">MyTask</span>(<span class="hljs-type">int</span> id) : <span class="hljs-built_in">m_id</span>(id) &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// 模拟耗时任务</span><br>        <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Task&quot;</span> &lt;&lt; m_id &lt;&lt; <span class="hljs-string">&quot;running on thread&quot;</span> &lt;&lt; QThread::<span class="hljs-built_in">currentThread</span>();<br>        QThread::<span class="hljs-built_in">sleep</span>(<span class="hljs-number">2</span>);  <span class="hljs-comment">// 模拟耗时操作</span><br>        <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Task&quot;</span> &lt;&lt; m_id &lt;&lt; <span class="hljs-string">&quot;finished&quot;</span>;<br>    &#125;<br><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> m_id;<br>&#125;;<br><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">QCoreApplication <span class="hljs-title">a</span><span class="hljs-params">(argc, argv)</span></span>;<br><br>    <span class="hljs-comment">// 获取全局的 QThreadPool 实例</span><br>    QThreadPool *threadPool = QThreadPool::<span class="hljs-built_in">globalInstance</span>();<br><br>    <span class="hljs-comment">// 设置线程池的最大线程数（可选）</span><br>    threadPool-&gt;<span class="hljs-built_in">setMaxThreadCount</span>(<span class="hljs-number">5</span>);<br><br>    <span class="hljs-comment">// 创建并提交多个任务</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i) &#123;<br>        MyTask *task = <span class="hljs-keyword">new</span> <span class="hljs-built_in">MyTask</span>(i);<br>        task-&gt;<span class="hljs-built_in">setAutoDelete</span>(<span class="hljs-literal">true</span>);  <span class="hljs-comment">// 任务完成后自动删除</span><br>        threadPool-&gt;<span class="hljs-built_in">start</span>(task);<br>    &#125;<br><br>    <span class="hljs-comment">// 继续主线程的其他操作</span><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Main thread continues...&quot;</span>;<br><br>    <span class="hljs-comment">// 等待线程池中的任务完成（可选）</span><br>    threadPool-&gt;<span class="hljs-built_in">waitForDone</span>();<br><br>    <span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>代码说明：</strong></p>
+<ol>
+<li><strong><code>MyTask</code> 类</strong>：这是一个继承自 <code>QRunnable</code> 的任务类，<code>QRunnable</code>是一个独立的抽象类，旨在为任务定义一个标准的运行接口。，在 <code>run()</code> 方法中实现了要执行的任务逻辑。每个任务都在一个单独的线程中运行。</li>
+<li>**<code>QThreadPool</code>**：在主函数中，通过 <code>QThreadPool::globalInstance()</code> 获取全局的线程池实例，并向线程池提交多个任务。你可以通过 <code>setMaxThreadCount()</code> 设置线程池的最大线程数。</li>
+<li><strong>自动删除任务</strong>：在提交任务之前调用 <code>task-&gt;setAutoDelete(true);</code>，可以确保任务在完成后自动删除，以避免内存泄漏。</li>
+<li><strong>等待任务完成</strong>：<code>threadPool-&gt;waitForDone();</code> 可以让主线程等待线程池中的所有任务完成后再继续执行。如果你不需要等待任务完成，可以省略这行代码。</li>
+</ol>
+<p><strong>输出示例：</strong></p>
+<p>运行该程序时，你会看到多个任务在不同的线程上并发执行。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">arduino复制代码Task 0 running on thread QThread(0x...)<br>Task 1 running on thread QThread(0x...)<br>...<br>Task 0 finished<br>Task 1 finished<br>...<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>适用场景：</strong></p>
+<p>​	使用 <code>QRunnable</code> 和 <code>QThreadPool</code> 适合处理需要并发执行的多个独立任务，特别是在任务数量大且每个任务耗时较短的情况下，线程池可以有效地复用线程，减少线程创建和销毁的开销。</p>
+<p>​	有的小伙伴会有疑问，既然有 QThread 线程类了，为啥还要用 QRunnable + QThreadPool 创建线程池的方法来使用线程机制呢，感觉用起来很麻烦啊。所以这里要说明一下此方法的使用场景，当线程任务量非常大的时候，如果频繁的创建和释放 QThread 会带来非常大的内存开销，而线程池则可以有效避免这个问题。</p>
+<p>​	还有一个问题需要注意一下，QThread 是集成自 QObject 的，我们通常会使用信号槽与外界进行通信。而 QRunnable 并不是继承自 QObject 类的，所以他无法使用信号槽机制进行通信。这里推荐两种方法，一个是使用 QMetaObject::invokeMethod()函数。另一个是使用多重继承的方法，自定义类需要同时继承自 QRunnable 和 QObject。</p>
+<h1><span id="4使用-c-11-中的-sththread">4.使用 C++ 11 中的 sth::thread</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">threadfun1</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;threadfun1 - 1\r\n&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">1</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;threadfun1 - 2&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">threadfun2</span><span class="hljs-params">(<span class="hljs-type">int</span> iParam, std::string sParam)</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;threadfun2 - 1&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">5</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;threadfun2 - 2&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">std::thread <span class="hljs-title">t1</span><span class="hljs-params">(threadfun1)</span></span>;<br>    <span class="hljs-function">std::thread <span class="hljs-title">t2</span><span class="hljs-params">(threadfun2, <span class="hljs-number">10</span>, <span class="hljs-string">&quot;abc&quot;</span>)</span></span>;<br>    t<span class="hljs-number">1.</span><span class="hljs-built_in">join</span>();		<span class="hljs-comment">// 等待线程 t1 执行完毕</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;join&quot;</span> &lt;&lt; std::endl;<br>    t<span class="hljs-number">2.</span><span class="hljs-built_in">detach</span>();	<span class="hljs-comment">// 将线程 t2 与主线程分离</span><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;detach&quot;</span> &lt;&lt; std::endl;<br>&#125;<br><br>运行结果：<br>threadfun1 - <span class="hljs-number">1</span><br>threadfun2 - <span class="hljs-number">1</span><br><br>threadfun1 - <span class="hljs-number">2</span><br>join<br>detach<br><br></code></pre></td></tr></table></figure>
+
+<p>根据输出结果可以得知，t1.join() 会等待t1线程退出后才继续往下执行，t2.detach() 并不会等待，detach字符输出后，主函数退出，threadfun2还未执行完成，但是在主线程退出后，t2的线程也被已经被强退出</p>
+<h1><span id="5qtconcurrent">5.QtConcurrent</span></h1><p>Concurrent 是并发的意思，QtConcurrent 是一个命名空间，<code>QtConcurrent</code> 提供了一组用于处理多线程任务的高级API接口，使得所写的程序可根据计算机的 CPU 核数，自动调整运行的线程数目，可以在不显式管理线程的情况下实现并行计算。以下是一些常见的 <code>QtConcurrent</code> 用法，展示了如何使用它来实现多线程。</p>
+<p>函数原型如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function">QFuture&lt;T&gt; <span class="hljs-title">QtConcurrent::run</span><span class="hljs-params">(Function function, ...)</span></span><br><span class="hljs-function">QFuture&lt;T&gt; <span class="hljs-title">QtConcurrent::run</span><span class="hljs-params">(QThreadPool *pool, Function function, ...)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>简单来说，QtConcurrent::run() 函数会在一个单独的线程中执行，并且该线程取自全局 QThreadPool，该函数的返回值通过 QFuture API 提供</p>
+<p>需要注意的是：<br>1）该函数可能不会立即运行; 函数只有在线程可用时才会运行<br>2）通过 QtConcurrent::run() 返回的 QFuture 不支持取消、暂停，返回的 QFuture 只能用于查询函数的运行&#x2F;完成状态和返回值<br>3） Qt Concurrent 已经从 QtCore 中移除并成为了一个独立的模块，所以想要使用 QtConcurrent 需要在 pro 文件中导入模块：<br>QT +&#x3D; concurrent</p>
+<ol>
+<li><strong><code>QtConcurrent::run()</code> - 执行单个函数或可调用对象</strong></li>
+</ol>
+<p><code>QtConcurrent::run()</code> 是一个最简单的多线程实现方式，它允许你将一个函数或可调用对象（例如，lambda 函数）在一个独立线程中执行。</p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QtConcurrent/QtConcurrent&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QCoreApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">doWork</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span> </span>&#123;<br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Processing value:&quot;</span> &lt;&lt; value &lt;&lt; <span class="hljs-string">&quot;on thread:&quot;</span> &lt;&lt; QThread::<span class="hljs-built_in">currentThread</span>();<br>    QThread::<span class="hljs-built_in">sleep</span>(<span class="hljs-number">2</span>);  <span class="hljs-comment">// 模拟耗时操作</span><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Finished processing value:&quot;</span> &lt;&lt; value;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span> </span>&#123;<br>    <span class="hljs-function">QCoreApplication <span class="hljs-title">app</span><span class="hljs-params">(argc, argv)</span></span>;<br><br>    <span class="hljs-comment">// 使用 QtConcurrent::run() 启动新线程执行任务</span><br>    QtConcurrent::<span class="hljs-built_in">run</span>(doWork, <span class="hljs-number">42</span>);<br><br>    <span class="hljs-comment">// 主线程继续其他操作</span><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Main thread continues...&quot;</span>;<br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>输出示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">Main thread continues...<br>Processing value: <span class="hljs-number">42</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0</span>x...)<br>Finished processing value: <span class="hljs-number">42</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>2. <code>QtConcurrent::map()</code> - 并行处理容器中的元素</strong></p>
+<p><code>QtConcurrent::map()</code> 函数用于对容器中的每个元素并行执行相同的操作。</p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QtConcurrent/QtConcurrent&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QCoreApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QVector&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">processItem</span><span class="hljs-params">(<span class="hljs-type">int</span> &amp;item)</span> </span>&#123;<br>    item *= <span class="hljs-number">2</span>;<br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Processing item:&quot;</span> &lt;&lt; item &lt;&lt; <span class="hljs-string">&quot;on thread:&quot;</span> &lt;&lt; QThread::<span class="hljs-built_in">currentThread</span>();<br>    QThread::<span class="hljs-built_in">sleep</span>(<span class="hljs-number">1</span>);  <span class="hljs-comment">// 模拟耗时操作</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span> </span>&#123;<br>    <span class="hljs-function">QCoreApplication <span class="hljs-title">app</span><span class="hljs-params">(argc, argv)</span></span>;<br><br>    QVector&lt;<span class="hljs-type">int</span>&gt; data = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><br>    <span class="hljs-comment">// 使用 QtConcurrent::map() 并行处理容器中的每个元素</span><br>    QtConcurrent::<span class="hljs-built_in">map</span>(data, processItem);<br><br>    <span class="hljs-comment">// 主线程继续其他操作</span><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;Main thread continues...&quot;</span>;<br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>输出示例：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++">Processing item: <span class="hljs-number">8</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0x7bf840</span>, name = <span class="hljs-string">&quot;Thread (pooled)&quot;</span>)<br>Processing item: <span class="hljs-number">4</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0x7bf6e0</span>, name = <span class="hljs-string">&quot;Thread (pooled)&quot;</span>)<br>Processing item: <span class="hljs-number">2</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0x7bf7c0</span>, name = <span class="hljs-string">&quot;Thread (pooled)&quot;</span>)<br>Processing item: <span class="hljs-number">6</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0x7bf980</span>, name = <span class="hljs-string">&quot;Thread (pooled)&quot;</span>)<br>Processing item: <span class="hljs-number">10</span> on thread: <span class="hljs-built_in">QThread</span>(<span class="hljs-number">0x7bfa00</span>, name = <span class="hljs-string">&quot;Thread (pooled)&quot;</span>)<br>Main thread continues...<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>Author：</strong>WangChengGang<br>
+        <strong>Link：</strong><a href="http://example.com/2025/04/28/%E3%80%90QT%E3%80%91qt%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BA%94%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt开启线程的五种方式&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2025&#x2F;04&#x2F;28&#x2F;【QT】qt开启线程的五种方式&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>
